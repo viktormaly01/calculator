@@ -1,13 +1,13 @@
-buttons = document.querySelectorAll("button")
-operador = document.querySelectorAll(".operador")
-outputResult = document.querySelector(".output-result")
+let buttons = document.querySelectorAll("button")
+let operador = document.querySelectorAll(".operador")
+let outputResult = document.querySelector(".output-result")
 
-operar = false
+oper = false
 
 num1 = ""
 num2 = ""
 
-function add(){
+function add(num1, num2){
    return num1 + num2
 }
 
@@ -16,7 +16,7 @@ function subtract(){
 }
 
 function multiply(){
-    return num1 * num2
+    return num1 / num2
 }
 
 function divide(){
@@ -28,16 +28,21 @@ buttons.forEach(button => {
     button.addEventListener('click', (event) => {
         const element = event.target;
         if(element.classList.contains("operator")){
-            operar = button.textContent
+            oper = button.textContent
         }
     });
 });
 
+/*
+function operate(numero1, operador, numero2){
+    return resultado = numero1 + operador + numero2
+}*/
+
 buttons.forEach(button => {
     button.addEventListener("click", (event) => {     
         const element = event.target;
-
-        if(!operar){
+        console.log(oper)
+        if(!oper){
             num1 += button.textContent
             console.log(num1)
         }else if(element.classList.contains("btn-value")){
@@ -46,20 +51,31 @@ buttons.forEach(button => {
         }
             
         outputResult.innerText += button.textContent
+        
+        firstValue = Number(num1)
+        console.log(typeof(firstValue))
 
         if(button.textContent == "="){
-            operate(operar, num1, num2)
-            console.log(operate((operar, num1, num2)))
+            firstValue = Number(num1)
+            secondValue = Number(num2)
+            //operadorUm = Number(operar)
+            console.log(oper)
+            let resposta 
+
+            if(oper == "+"){
+                resposta = add(firstValue, secondValue)
+            } else if(oper== "-"){
+                resposta = subtract(firstValue, secondValue)
+            } else if(oper == "*"){
+                resposta = multiply(firstValue, secondValue)
+            } else{
+                resposta = divide(firstValue, secondValue)
+            }
+
+            outputResult.innerText = resposta
         }
     })
 });
 
-function operate(operator, num1, num2){
-    resultado = num1 + operator + num2
-}
-
-console.log(operate(add(), 1, 2))
-
-valor1 = 1
-valor2 = 2
-valor3 = valor1+valor2
+/*
+console.log(operate(add(), 1, 2))*/
