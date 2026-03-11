@@ -17,7 +17,7 @@ h1{
 
 
 .output-result{
-
+    height: 40px;
     background-color: #fefae0;
     padding: 20px 20px;
     border-radius: 20px;
