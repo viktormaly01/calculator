@@ -2,7 +2,7 @@ let buttons = document.querySelectorAll("button")
 let operador = document.querySelectorAll(".operador")
 let outputResult = document.querySelector(".output-result")
 
-oper = false
+oper = null
 
 num1 = ""
 num2 = ""
@@ -11,16 +11,16 @@ function add(num1, num2){
    return num1 + num2
 }
 
-function subtract(){
+function subtract(num1, num2){
     return num1 - num2
 }
 
-function multiply(){
+function multiply(num1, num2){
+    return num1 * num2
+}
+
+function divide(num1, num2){
     return num1 / num2
-}
-
-function divide(){
-    return num1 - num2
 }
 
 //logica
@@ -60,8 +60,8 @@ buttons.forEach(button => {
             secondValue = Number(num2)
             //operadorUm = Number(operar)
             console.log(oper)
-            let resposta 
-
+            let resposta;
+            
             if(oper == "+"){
                 resposta = add(firstValue, secondValue)
             } else if(oper== "-"){
@@ -71,6 +71,9 @@ buttons.forEach(button => {
             } else{
                 resposta = divide(firstValue, secondValue)
             }
+
+            if(resposta % 1 != 0)
+                resposta = Number(resposta.toFixed(2))
 
             outputResult.innerText = resposta
         }
