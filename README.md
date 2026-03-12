@@ -7,7 +7,7 @@ O objetivo central deste trabalho foi a prática de **lógica de programação, 
 
 ---
 
-## 👥 ALuno
+## 👥 Aluno
 
 Viktor Maly
 
